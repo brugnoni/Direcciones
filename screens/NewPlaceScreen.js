@@ -15,7 +15,7 @@ const NewPlaceScreen = ({ navigation }) => {
     setTitle(text);
   };
   const handleSave = () => {
-    dispatch(addPlace(title));
+    dispatch(addPlace(title, image));
     navigation.navigate("Direcciones");
   };
 
