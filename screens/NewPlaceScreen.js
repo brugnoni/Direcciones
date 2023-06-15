@@ -5,10 +5,12 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { COLORS } from "../constants";
 import { addPlace } from "../store/places.actions";
 import { useDispatch } from "react-redux";
+import ImageSelector from "../components/ImageSelector";
 
 const NewPlaceScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
+  const [image, setImage] = useState();
   const handleTitleChange = (text) => {
     setTitle(text);
   };
@@ -26,6 +28,7 @@ const NewPlaceScreen = ({ navigation }) => {
           value={title}
           onChangeText={handleTitleChange}
         />
+        <ImageSelector onImage={setImage} />
         <Button
           title="Guardar Dirección"
           color={COLORS.MAROON}
