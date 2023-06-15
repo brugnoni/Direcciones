@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { COLORS } from "../constants";
 import * as Location from "expo-location";
+import MapPreview from "./MapPreview";
 
 const LocationSelector = ({ onLocation }) => {
   const navigation = useNavigation();
@@ -35,15 +36,9 @@ const LocationSelector = ({ onLocation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.preview}>
-        {pickedLocation ? (
-          <Text>
-            {pickedLocation.lat}, {pickedLocation.lng}
-          </Text>
-        ) : (
-          <Text>Esperando Ubicación...</Text>
-        )}
-      </View>
+      <MapPreview location={pickedLocation} newStyles={styles.preview}>
+        <Text>Ubicación en proceso...</Text>
+      </MapPreview>
       <Button
         title="Obtener Ubicación"
         color={COLORS.PEACH_PUFF}
