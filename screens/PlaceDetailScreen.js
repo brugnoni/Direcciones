@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native'
 const PlaceDetailScreen = () => {
     return (
         <View style={styles.container}>
-            <Text>Detalle Direccion</Text>
+            <Text>Detalles de la Dirección Seleccionada</Text>
         </View>
     )
 }

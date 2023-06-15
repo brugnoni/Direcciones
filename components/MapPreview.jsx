@@ -1,8 +1,13 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import { Image, StyleSheet, Text, View } from "react-native";
+import React, { useEffect } from "react";
+
 import Map from "../constants/Map";
 
 const MapPreview = ({ location, children, newStyles }) => {
+  useEffect(() => {
+    console.log(location);
+  }, []);
+
   const mapPreviewUrl = location
     ? `https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.lng}&zoom=13&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C${location.lat},${location.lng}&key=${Map.API_KEY}`
     : "";

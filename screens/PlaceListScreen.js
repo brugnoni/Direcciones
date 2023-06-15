@@ -1,10 +1,10 @@
-import React from "react";
-import { FlatList } from "react-native";
-import { View, Text, StyleSheet } from "react-native";
-import { useSelector } from "react-redux";
-import PlaceItem from "../components/PlaceItem";
+import { FlatList, StyleSheet } from "react-native";
 
-const PlaceListScreen = () => {
+import PlaceItem from "../components/PlaceItem";
+import React from "react";
+import { useSelector } from "react-redux";
+
+const PlaceListScreen = ({ navigation }) => {
   const places = useSelector((state) => state.places.places);
 
   const renderItem = ({ item }) => (
