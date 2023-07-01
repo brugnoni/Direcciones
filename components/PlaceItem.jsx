@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   address: {
-    color: COLORS.PEACH_PUFF,
+    color: COLORS.DARK_SIENNA,
     fontSize: 16,
   },
 });

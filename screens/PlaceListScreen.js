@@ -11,7 +11,7 @@ const PlaceListScreen = ({ navigation }) => {
     <PlaceItem
       title={item.title}
       image={item.image}
-      address={"Address"}
+      address={item.address}
       onSelect={() => navigation.navigate("Detalle", { placeId: item.id })}
     />
   );

@@ -9,6 +9,17 @@ const LocationSelector = ({ onLocation }) => {
   const navigation = useNavigation();
   const [pickedLocation, setPickedLocation] = useState();
 
+  const verifyPermissions = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      Alert.alert("Permisos insuficientes, porfavor acepte los permisos", [
+        { text: "Ok" },
+      ]);
+      return false;
+    }
+    return true;
+  };
+
   const handleGetLocation = async () => {
     const isLocationOk = await verifyPermissions();
     if (!isLocationOk) return;
@@ -22,16 +33,6 @@ const LocationSelector = ({ onLocation }) => {
       lat: location.coords.latitude,
       lng: location.coords.longitude,
     });
-  };
-  const verifyPermissions = async () => {
-    const { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== "granted") {
-      Alert.alert("Permisos insuficientes, porfavor acepte los permisos", [
-        { text: "Ok" },
-      ]);
-      return false;
-    }
-    return true;
   };
 
   return (
