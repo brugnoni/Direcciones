@@ -1,7 +1,9 @@
 import * as FileSystem from "expo-file-system";
 import { Map } from "../constants/Map";
+import { fetchAddress, insertAddress } from "../db";
 
 export const ADD_PLACE = "ADD_PLACE";
+export const LOAD_PLACE = "LOAD_PLACE";
 
 export const addPlace = (title, image, location) => {
   return async (dispatch) => {
@@ -31,6 +33,14 @@ export const addPlace = (title, image, location) => {
         from: image,
         to: Path,
       });
+      const result = await insertAddress(
+        title,
+        image,
+        address,
+        location.lat,
+        location.lng
+      );
+      console.log(result);
     } catch (error) {
       console.log(error.message);
       throw error;
@@ -45,5 +55,17 @@ export const addPlace = (title, image, location) => {
         lng: location.lng,
       },
     });
+  };
+};
+
+export const loadAddress = () => {
+  return async (dispatch) => {
+    try {
+      const result = await fetchAddress();
+      console.log(result);
+      dispatch({ type: LOAD_PLACE, places: result.rows._array });
+    } catch (error) {
+      throw error;
+    }
   };
 };
